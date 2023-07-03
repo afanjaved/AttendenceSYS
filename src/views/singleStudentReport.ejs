@@ -1,0 +1,37 @@
+<!-- single-attendance.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Single Student report</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Single Student Attendance report</h1>
+    <h2>Name: <%= student.name %></h2>
+    <h2>Email: <%= student.email %></h2>
+    <h2>Attendance:</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>attendance:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(att => { %>
+        <tr>
+          <td><%= att.date.toDateString() %></td>
+          <td><%= att.attendence === 'present' ? "Present" : att.attendence === 'leave' ? "Leave" : att.attendence === 'pending' ? "Pending" : "Absent" %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+

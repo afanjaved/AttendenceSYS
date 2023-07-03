@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <table class="table" >
+        <tr>
+            <th>Date</th>
+            <th>Email</th>
+            <th>attendence</th>
+        </tr>
+        <%
+        if (data.length>0) {
+            for (let i = 0; i < data.length; i++) {
+                %>
+       <tr>
+        <td><%=data[i].date.toLocaleDateString()%></td>
+        <td><%=data[i].userid.email%></td>
+        <td><%=data[i].attendence%></td> 
+       </tr>
+                <%  
+              }
+        } else {
+          %>
+          <td> colspan="4">u ser not found</td>
+          <%
+        }
+        %>
+    </table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Leaves Request</title>
+</head>
+<body>
+    <table class="table" >
+        <tr>
+            <th>Date</th>
+            <th>Email</th>
+            <th>attendence</th>
+        </tr>
+        <%
+        if (data.length>0) {
+            for (let i = 0; i < data.length; i++) {
+                %>
+                <tr>
+                    <form action="/process_leave" method="post">
+                        <td><%=data[i].date.toLocaleDateString()%></td>
+                        <td><%=data[i].userid.email%></td>
+                        <td><%=data[i].attendence%></td> 
+                        <td>
+                            <input type="hidden" name="data" value="<%=data%>">
+                            <input type="hidden" name="leave_id" value="<%=data[i].id%>">
+                            <input class="btn btn-primary" type="submit" name="action" value="Accept">
+                        </td>
+                        <td>
+                            <input type="hidden" name="data" value="<%=data%>">
+                            <input type="hidden" name="leave_id" value="<%=data[i].id%>">
+                            <input class="btn btn-primary" type="submit" name="action" value="Reject">
+                        </td>
+                    </form>
+                </tr>
+                
+                <%  
+              }
+        } else {
+          %>
+          <td colspan="4" > <h1>No entries</h1></td>
+          <%
+        }
+        %>
+    </table>
+</body>
+</html>
